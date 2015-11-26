@@ -1,6 +1,15 @@
-
-<form action="#" method="">
-    Enter URL:
-    <input type="text" name="long_url">
-    <input type="submit" value="Submit">
+<h2>Welcome to Jos.ly's URL shorterner App</h2>
+<br>
+<form action="/urls" method="post">
+	Enter URL to shorten:
+	<input type = "text" name = "user_input_long_url">
+	<input type = "submit" value = "Submit">
 </form>
+
+<br>
+<h4>URLs searched with shortened URLs results:</h4>
+<% @urls.each do |url| %>
+<%= url.index_number %>. <%= url.long_url %> --> <a href=<%=url.short_url%>>http://mit.ly/<%= url.short_url %> </a> <br>  (click count: <%= url.click_count %>)  <a href="/delete/<%= url.index_number %>">Delete Url</a>
+<br>
+<br>
+<% end %>
